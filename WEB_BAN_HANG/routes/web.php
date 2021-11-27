@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\WebsiteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'website'],function(){
+    Route::get('trangchu',[WebsiteController::class,'index']);
 });
