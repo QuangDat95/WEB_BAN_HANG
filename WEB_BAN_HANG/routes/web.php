@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\TheloaiController;
+use App\Http\Controllers\Admin\SanphamController;
+use App\Http\Controllers\Admin\DonhangController;
+use App\Http\Controllers\Admin\DanhsachdonhangController;
 use App\Http\Controllers\WebsiteController;
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,15 @@ use App\Http\Controllers\WebsiteController;
 |
 */
 
-Route::group(['prefix' => 'website'],function(){
-    Route::get('trangchu',[WebsiteController::class,'index']);
+Route::group(['prefix' => 'admin'],function(){
+    Route::resource('theloai',TheloaiController::class);
+    Route::resource('sanpham',SanphamController::class);
+    Route::resource('donhang',DonhangController::class);
+    Route::resource('danhsach',DanhsachdonhangController::class);
+});
+Route::group(['prefix'=>'website'],function(){
+    Route::get('trangchu',[WebsiteController::class,'index'])->name('trangchu');
+    Route::get('chitiet/{id}',[WebsiteController::class,'chitiet'])->name('chitiet');
+    Route::get('addCart/{id}',[WebsiteController::class,'addCart'])->name('addCart');
+    Route::get('getCart',[WebsiteController::class,'getCart'])->name('getCart');
 });
