@@ -38,12 +38,12 @@
 			<div class="container">
 				<ul class="header-links pull-left">
 					<li><a href=""><i class="fa fa-phone"></i> +(84)18001061</a></li>
-					<li><a href=""><i class="fa fa-envelope-o"></i> dienmayxanh@email.com</a></li>
-					<li><a href="https://goo.gl/maps/oUuD2YVpWqVB8XmA8"><i class="fa fa-map-marker"></i>257 Lê Duẩn-Phường 5-Đông Hà-Quảng Trị</a></li>
+					<li><a href=""><i class="fa fa-envelope-o"></i> fashionshe@email.com</a></li>
+					<li><a href="https://goo.gl/maps/J2GV7fng5oFAJFKf8"><i class="fa fa-map-marker"></i>61 Lê Thế Hiếu-Phường 1-Đông Hà-Quảng Trị</a></li>
 				</ul>
 				<ul class="header-links pull-right">
 					<!-- <li><a href="#"><i class="fa fa-dollar"></i>VND</a></li> -->
-					<li><a href="#"><i class="fa fa-user-o"></i>Quản lý</a></li>
+					<li><a href="{{route('theloai.index')}}"><i class="fa fa-user-o"></i>Quản lý</a></li>
 				</ul>
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 					<div class="col-md-3">
 						<div class="header-logo">
 							<a href="#" class="logo">
-								<img src="{{URL::asset('img/maxresdefault.jpg')}}">
+								<img src="{{URL::asset('img/tao-logo-shop-quan-ao-fs.jpg')}}" style="height:80px">
 							</a>
 						</div>
 					</div>
@@ -149,7 +149,12 @@
 				<!-- NAV -->
 				<ul class="main-nav nav navbar-nav">
 					<li><a href="{{route('trangchu')}}">Trang chủ</a></li>
-					<li><a href="{{route('cuahang')}}">Cửa hàng</a></li>
+					<li><a href="{{route('aonam')}}">Áo Nam</a></li>
+					<li><a href="{{route('quannam')}}">Quần Nam</a></li>
+					<li><a href="{{route('aonu')}}">Áo Nữ</a></li>
+					<li><a href="{{route('quannu')}}">Quần Nữ</a></li>
+					<li><a href="{{route('pk_nam')}}">Phụ kiện Nam</a></li>
+					<li><a href="{{route('pk_nu')}}">Phụ kiện Nữ</a></li>
 					<li><a href="{{route('lienhe')}}">Liên hệ</a></li>
 				</ul>
 				<!-- /NAV -->

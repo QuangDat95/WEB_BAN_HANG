@@ -9,11 +9,11 @@
 				<div class="col-md-9 col-xs-6">
 					<div class="footer">
 						<h3 class="footer-title">Liên Hệ</h3>
-						<p>Siêu thị Điện máy Xanh mua sắm thiết bị điện tử điện lạnh, gia dụng, sản phẩm công nghệ.</p>
+						<p>Cửa hàng áo quần, phụ kiện thời trang</p>
 						<ul class="footer-links">
-							<li><a href="https://goo.gl/maps/oUuD2YVpWqVB8XmA8"><i class="fa fa-map-marker"></i>257 Lê Duẩn, Phường 5, Đông Hà, Quảng Trị</a></li>
+							<li><a href="https://goo.gl/maps/J2GV7fng5oFAJFKf8"><i class="fa fa-map-marker"></i>61 Lê Thế Hiếu, Phường 1, Đông Hà, Quảng Trị</a></li>
 							<li><a href="#"><i class="fa fa-phone"></i>+(84) 18001061</a></li>
-							<li><a href="#"><i class="fa fa-envelope-o"></i>dienmayxanh@email.com</a></li>
+							<li><a href="#"><i class="fa fa-envelope-o"></i>fashionshe@email.com</a></li>
 						</ul>
 					</div>
 				</div>

@@ -98,14 +98,62 @@ class WebsiteController extends Controller
         return redirect()->route('trangchu');
     }
 
-    public function Cuahang()
+    public function lienhe()
     {
-        $sanphams = SanphamModel::paginate(6);
-        $banchays = DanhsachdonhangModel::orderBy('chi_tiet_don_hang.so_luong', 'desc')->limit(5)->get();
-        return view('frontend.cuahang.cuahang', compact('sanphams', 'banchays'));
+        return view('frontend.lienhe');
     }
 
-    public function lienhe(){
-        return view('frontend.lienhe');
+    public function aonam()
+    {
+        $sanphams = SanphamModel::join('the_loai', 'san_pham.TL_id', '=', 'the_loai.id')->select('san_pham.*')
+            ->where('the_loai.the_loai', '=', 'Áo Nam')
+            ->paginate(6);
+        $banchays = DanhsachdonhangModel::orderBy('chi_tiet_don_hang.so_luong', 'desc')->limit(5)->get();
+        return view('frontend.aonam', compact('sanphams', 'banchays'));
+    }
+
+    public function quannam()
+    {
+        $sanphams = SanphamModel::join('the_loai', 'san_pham.TL_id', '=', 'the_loai.id')->select('san_pham.*')
+            ->where('the_loai.the_loai', '=', 'Quần Nam')
+            ->paginate(6);
+        $banchays = DanhsachdonhangModel::orderBy('chi_tiet_don_hang.so_luong', 'desc')->limit(5)->get();
+        return view('frontend.quannam', compact('sanphams', 'banchays'));
+    }
+
+    public function aonu()
+    {
+        $sanphams = SanphamModel::join('the_loai', 'san_pham.TL_id', '=', 'the_loai.id')->select('san_pham.*')
+            ->where('the_loai.the_loai', '=', 'Áo Nữ')
+            ->paginate(6);
+        $banchays = DanhsachdonhangModel::orderBy('chi_tiet_don_hang.so_luong', 'desc')->limit(5)->get();
+        return view('frontend.aonu', compact('sanphams', 'banchays'));
+    }
+
+    public function quannu()
+    {
+        $sanphams = SanphamModel::join('the_loai', 'san_pham.TL_id', '=', 'the_loai.id')->select('san_pham.*')
+            ->where('the_loai.the_loai', '=', 'Quần Nữ')
+            ->paginate(6);
+        $banchays = DanhsachdonhangModel::orderBy('chi_tiet_don_hang.so_luong', 'desc')->limit(5)->get();
+        return view('frontend.quannu', compact('sanphams', 'banchays'));
+    }
+
+    public function pk_nam()
+    {
+        $sanphams = SanphamModel::join('the_loai', 'san_pham.TL_id', '=', 'the_loai.id')->select('san_pham.*')
+            ->where('the_loai.the_loai', '=', 'Phụ kiện Nam')
+            ->paginate(6);
+        $banchays = DanhsachdonhangModel::orderBy('chi_tiet_don_hang.so_luong', 'desc')->limit(5)->get();
+        return view('frontend.pk_nam', compact('sanphams', 'banchays'));
+    }
+
+    public function pk_nu()
+    {
+        $sanphams = SanphamModel::join('the_loai', 'san_pham.TL_id', '=', 'the_loai.id')->select('san_pham.*')
+            ->where('the_loai.the_loai', '=', 'Phụ kiện Nữ')
+            ->paginate(6);
+        $banchays = DanhsachdonhangModel::orderBy('chi_tiet_don_hang.so_luong', 'desc')->limit(5)->get();
+        return view('frontend.pk_nu', compact('sanphams', 'banchays'));
     }
 }

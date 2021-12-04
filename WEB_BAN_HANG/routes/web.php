@@ -34,7 +34,11 @@ Route::group(['prefix'=>'website'],function(){
     Route::post('saveOrder',[WebsiteController::class,'Checkout'])->name('saveOrder');
     Route::get('orderSuccess',[WebsiteController::class,'orderSuccess'])->name('orderSuccess');
     Route::get('returnHome',[WebsiteController::class,'returnHome'])->name('returnHome');
-    Route::get('cuahang',[WebsiteController::class,'cuahang'])->name('cuahang');
     Route::get('lienhe',[WebsiteController::class,'lienhe'])->name('lienhe');
-    Route::get('giatang',[WebsiteController::class,'giatang'])->name('giatang');
+    Route::get('aonam',[WebsiteController::class,'aonam'])->name('aonam');
+    Route::get('quannam',[WebsiteController::class,'quannam'])->name('quannam');
+    Route::get('aonu',[WebsiteController::class,'aonu'])->name('aonu');
+    Route::get('quannu',[WebsiteController::class,'quannu'])->name('quannu');
+    Route::get('pk_nam',[WebsiteController::class,'pk_nam'])->name('pk_nam');
+    Route::get('pk_nu',[WebsiteController::class,'pk_nu'])->name('pk_nu');
 });
