@@ -28,4 +28,13 @@ Route::group(['prefix'=>'website'],function(){
     Route::get('chitiet/{id}',[WebsiteController::class,'chitiet'])->name('chitiet');
     Route::get('addCart/{id}',[WebsiteController::class,'addCart'])->name('addCart');
     Route::get('getCart',[WebsiteController::class,'getCart'])->name('getCart');
+    Route::get('deleteListCart/{id}',[WebsiteController::class,'deleteListCart']);
+    Route::get('saveItemListCart/{id}/{quanty}',[WebsiteController::class,'saveItemListCart']);
+    Route::get('checkout',[WebsiteController::class,'getCheckout'])->name('getCheckout');
+    Route::post('saveOrder',[WebsiteController::class,'Checkout'])->name('saveOrder');
+    Route::get('orderSuccess',[WebsiteController::class,'orderSuccess'])->name('orderSuccess');
+    Route::get('returnHome',[WebsiteController::class,'returnHome'])->name('returnHome');
+    Route::get('cuahang',[WebsiteController::class,'cuahang'])->name('cuahang');
+    Route::get('lienhe',[WebsiteController::class,'lienhe'])->name('lienhe');
+    Route::get('giatang',[WebsiteController::class,'giatang'])->name('giatang');
 });

@@ -12,7 +12,7 @@ class SanphamController extends Controller
 {
     public function index()
     {
-        $sanphams = SanphamModel::paginate(5);
+        $sanphams = SanphamModel::orderBy('id','desc')->paginate(5);
         return view('backend.sanpham.index',compact('sanphams'));
     }
     public function create()

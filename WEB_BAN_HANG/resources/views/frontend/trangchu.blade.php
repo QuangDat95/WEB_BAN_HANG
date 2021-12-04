@@ -21,7 +21,7 @@
 											<div class="product-body">
 												<h5 class="product-category">{{$sanpham->the_loai->the_loai}}</h5>
 												<h3 class="product-name"><a href="{{route('chitiet',$sanpham->id)}}">{{$sanpham->ten_sp}}</a></h3>
-                                                <h4 class="product-price">{{number_format($sanpham->gia_sp)}}<sup>đ</sup></h4>		
+                                                <h4 class="product-price"><strong>{{number_format($sanpham->gia_sp)}}</strong><sup>vnđ</sup></h4>		
 											</div>
 										</div>
                                     @endforeach

@@ -1,40 +1,48 @@
 <?php
 namespace App;
 class Cart{
-    public $items;
-    public $totalPrice;
-    public $totalQty;
+    public $products = null;
+    public $totalPrice = 0;
+    public $totalQuanty = 0;
 
-    public function __construct($oldCart)
+    public function __construct($cart)
     {
-        if ($oldCart) {
-            $this->items = $oldCart->items;
-            $this->totalPrice = $oldCart->totalPrice;
-            $this->totalQty = $oldCart->totalQty;
+        if ($cart) {
+            $this->products = $cart->products;
+            $this->totalPrice = $cart->totalPrice;
+            $this->totalQuanty = $cart->totalQuanty;
         }
     }
 
-    public function add($product)
-
+    public function AddCart($product, $id)
     {
-        $productStore = [
-            "item" => $product,
-            "totalQty" => 0,
-            "totalPrice" => 0
-        ];
-
-        //kiem tra san pham mua co ton tai trong gio hang hay khong?
-
-        if ($this->items) {
-            if (array_key_exists($product->id, $this->items)) {
-                $productStore = $this->items[$product->id];
+        $newProduct = ['quanty' => 0, 'price' => $product->gia_sp, 'productInfo' => $product];
+        if ($this->products) {
+            if (array_key_exists($id, $this->products)) {
+                $newProduct = $this->products[$id];
             }
         }
-
-        $productStore['totalQty']++;
-        $productStore['totalPrice'] += $product->gia_sp;
-        $this->items[$product->id] = $productStore;
-        $this->totalQty++;
+        $newProduct['quanty']++;
+        $newProduct['price'] = $newProduct['quanty'] * $product->gia_sp;
+        $this->products[$id] = $newProduct;
         $this->totalPrice += $product->gia_sp;
+        $this->totalQuanty++;
+    }
+
+    public function deleteItemCart($id){
+        $this->totalQuanty -= $this->products[$id]["quanty"];
+        $this->totalPrice -= $this->products[$id]["price"];
+        unset($this->products[$id]);
+    }
+
+    public function UpdateItemCart($id, $quanty){
+        $this->totalQuanty -= $this->products[$id]["quanty"];
+        $this->totalPrice -= $this->products[$id]["price"];
+
+        $this->products[$id]["quanty"] = $quanty;
+        $this->products[$id]["price"] = $quanty * $this->products[$id]["productInfo"]->gia_sp;
+
+        $this->totalQuanty += $this->products[$id]["quanty"];
+        $this->totalPrice += $this->products[$id]["price"];
     }
 }

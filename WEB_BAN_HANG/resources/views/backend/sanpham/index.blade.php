@@ -35,7 +35,6 @@
                                 <th class="sorting"><a href="#">Thể loại</a></th>
                                 <th class="sorting"><a href="#">Giá sản phẩm</a></th>
                                 <th class="sorting"><a href="#">Hình ảnh</a></th>
-                                <th class="sorting"><a href="#">Mô tả</a></th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -46,9 +45,8 @@
                                 <td>{{$sanpham->id}}</td>
                                 <td>{{$sanpham->ten_sp}}</td>
                                 <td>{{$sanpham->the_loai->the_loai}}</td>
-                                <td>{{$sanpham->gia_sp}}</td>
+                                <td>{{number_format($sanpham->gia_sp)}}<sup>đ</sup></td>
                                 <td><img src="{{ Storage::url($sanpham->hinh_anh) }}" alt="{{$sanpham->hinh_anh}}" style="height:2.5cm"></img></td>
-                                <td>{{$sanpham->mo_ta}}</td>
                                 <td>
                                     <form action="{{route('sanpham.destroy',$sanpham->id)}}" method="post">
                                         @csrf

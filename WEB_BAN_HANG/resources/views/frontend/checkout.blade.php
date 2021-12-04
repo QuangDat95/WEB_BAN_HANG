@@ -1,41 +1,5 @@
-
-<?php include_once "dataBaseConnect.php";?>
-<?php
-session_start();
-$gio_hang   = $_SESSION['gio_hang'];
-	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-		$Ten_khach_hang = $_POST['Ten_khach_hang'];
-		$dia_chi      = $_POST['dia_chi'];
-		$so_dt = $_POST['so_dt'];
-	$sql = "INSERT INTO don_hang
-	 ( 
-	 Ten_khach_hang, 
-	 ngay_mua, 
-	 so_dt, 
-	 dia_chi) VALUES
-	  (
-	  '$Ten_khach_hang',
-	   NOW(), 
-	   '$so_dt', 
-	   '$dia_chi'
-	   )";
-	$stmt   = $connect->query( $sql );
-	$new_id = $connect->lastInsertId();
-	foreach($gio_hang as $ID_san_pham => $So_luong){
-		$sql1 = "INSERT INTO chi_tiet_don_hang (
-			 ID_don_hang,
-			  ID_san_pham,
-			   So_luong) VALUES 
-			   ( '$new_id',
-			    '$ID_san_pham',
-				'$So_luong'
-				)";
-				$stmt1  = $connect->query( $sql1 );		
-	}
-	header("Location:order_success.php?id=".$new_id);
-}	
-?>
-<?php include_once "layout/header.php";?>
+@extends('frontend.index')
+@section('content')
 		<!-- BREADCRUMB -->
 		<div id="breadcrumb" class="section">
 			<!-- container -->
@@ -59,7 +23,8 @@ $gio_hang   = $_SESSION['gio_hang'];
 		<div class="section">
 			<!-- container -->
 			<div class="container">
-			<form action="" method="POST">
+			<form action="{{route('saveOrder')}}" method="POST">
+				@csrf
 				<!-- row -->
 				<div class="row">
 					<div class="col-md-7">
@@ -90,14 +55,12 @@ $gio_hang   = $_SESSION['gio_hang'];
 								<div><strong>TỔNG</strong></div>
 							</div>
 							<div class="order-products">
-								<?php $total = 0;?>
-								<?php foreach($rows as $key => $row): ?>
+								@foreach(Session::get('cart')->products as $key => $value)
 								<div class="order-col">
-									<div><strong><?php echo $cart[$row->ID_san_pham];?> X <?php echo $row->Ten_san_pham; ?></strong></div>
-									<div><?php echo number_format($row->Gia_san_pham*$cart[$row->ID_san_pham]);?></div>
+									<div><strong>{{$value["quanty"]}}x{{$value["productInfo"]->ten_sp}}</strong></div>
+									<div>{{$value["price"]}}</div>
 								</div>
-								<?php $total += $row->Gia_san_pham*$cart[$row->ID_san_pham];?>
-								<?php endforeach; ?>
+								@endforeach
 							</div>
 							<div class="order-col">
 								<div>Phí ship</div>
@@ -105,10 +68,10 @@ $gio_hang   = $_SESSION['gio_hang'];
 							</div>
 							<div class="order-col">
 								<div><strong>TỔNG</strong></div>
-								<div><strong class="order-total"><?php echo number_format($total);?></strong></div>
+								<div><strong class="order-total">{{number_format(Session::get('cart')->totalPrice)}}</strong></div>
 							</div>
 						</div>	
-						<button href="#" type="submit" class="primary-btn order-submit">Đặt hàng</button>
+						<button type="submit" class="primary-btn order-submit">Đặt hàng</button>
 					</div>
 					<!-- /Order Details -->
 				</div>
@@ -118,4 +81,4 @@ $gio_hang   = $_SESSION['gio_hang'];
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-	<?php include_once "layout/footer.php";?>
+@endsection
